@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background shape - rounded square -->
+  <rect x="2" y="2" width="60" height="60" rx="10" ry="10" fill="#4285f4" />
+  
+  <!-- Book shape -->
+  <path d="M16 16 L36 16 L36 44 L16 44 Z" fill="white" />
+  <path d="M36 16 Q44 16 44 24 L44 44 Q36 44 36 44" fill="#e6e6e6" />
+  
+  <!-- Book spine lines -->
+  <path d="M20 22 L32 22" stroke="#bbbbbb" stroke-width="1.5" />
+  <path d="M20 28 L32 28" stroke="#bbbbbb" stroke-width="1.5" />
+  <path d="M20 34 L32 34" stroke="#bbbbbb" stroke-width="1.5" />
+  
+  <!-- Plus symbol -->
+  <circle cx="44" cy="44" r="12" fill="#32CD32" />
+  <path d="M38 44 L50 44" stroke="white" stroke-width="3" stroke-linecap="round" />
+  <path d="M44 38 L44 50" stroke="white" stroke-width="3" stroke-linecap="round" />
+</svg>

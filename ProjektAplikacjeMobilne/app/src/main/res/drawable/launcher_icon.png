@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main circular background for adaptive icon compatibility -->
+  <circle cx="256" cy="256" r="230" fill="#4285f4" />
+  
+  <!-- Book base - shifted right by 20px -->
+  <path d="M170 140 L350 140 C360 140 370 150 370 160 L370 390 C370 400 360 410 350 410 L170 410 C160 410 150 400 150 390 L150 160 C150 150 160 140 170 140 Z" fill="#ffffff" />
+  
+  <!-- Book spine shadow - shifted right by 20px -->
+  <path d="M170 140 L190 140 C180 140 170 150 170 160 L170 390 C170 400 180 410 190 410 L170 410 C160 410 150 400 150 390 L150 160 C150 150 160 140 170 140 Z" fill="#e0e0e0" />
+  
+  <!-- Book cover design - shifted right by 20px -->
+  <rect x="190" y="160" width="160" height="230" fill="#ffa726" />
+  
+  <!-- Book pages - shifted right by 20px -->
+  <path d="M350 140 C360 140 370 150 370 160 L370 390 C370 400 360 410 350 410 L350 410 L350 140 Z" fill="#f5f5f5" />
+  <path d="M350 140 L370 160 L350 160 Z" fill="#e0e0e0" />
+  <path d="M350 410 L370 390 L370 160 L350 160 Z" fill="#e0e0e0" />
+  
+  <!-- Book title lines - shifted right by 20px -->
+  <rect x="220" y="200" width="100" height="10" rx="5" ry="5" fill="#ffffff" />
+  <rect x="220" y="230" width="80" height="10" rx="5" ry="5" fill="#ffffff" />
+  <rect x="220" y="260" width="100" height="10" rx="5" ry="5" fill="#ffffff" />
+  
+  <!-- Bookmark - shifted right by 20px -->
+  <path d="M320 160 L320 210 L335 190 L350 210 L350 160 Z" fill="#f44336" />
+  
+  <!-- Reading line marker - shifted right by 20px -->
+  <rect x="190" y="310" width="160" height="2" fill="#ffffff" opacity="0.7" />
+  <rect x="190" y="340" width="100" height="2" fill="#ffffff" opacity="0.7" />
+</svg>

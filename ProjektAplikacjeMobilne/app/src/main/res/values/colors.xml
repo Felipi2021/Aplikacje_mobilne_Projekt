@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- res/values/colors.xml -->
+    <color name="purple_500">#6200EE</color>
+    <color name="background_light">#F3F6FB</color>
+    <color name="primary_text">#1A237E</color>
+    <color name="secondary_text">#3949AB</color>
+    <color name="desc_text">#616161</color>
+</resources>
