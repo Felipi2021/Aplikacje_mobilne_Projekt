@@ -43,6 +43,8 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(new Intent(this, SearchBooksActivity.class));
             } else if (id == R.id.nav_homepage) {
                 startActivity(new Intent(this, HomeActivity.class));
+            } else if (id == R.id.nav_login) {
+                startActivity(new Intent(this, LoginActivity.class));
             }
             drawerLayout.closeDrawers();
             return true;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 12:51 PM
+-- Generation Time: May 21, 2025 at 03:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,7 +50,8 @@ INSERT INTO `books` (`id`, `title`, `author`, `description`) VALUES
 (9, 'kkkk', 'kkkkkkk', 'kkkkkkkk'),
 (10, 'gg', 'h', 'gg'),
 (11, 'abc', 'def', 'ghi'),
-(12, '', '', '');
+(12, '', '', ''),
+(13, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,25 @@ INSERT INTO `news` (`id`, `title`, `content`, `created_at`) VALUES
 (3, 'tytul3', 'opis3', '2025-05-21'),
 (4, 'tytul4', 'opis4', '2025-05-21');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `User`
+--
+
+CREATE TABLE `User` (
+  `id` int(11) NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `User`
+--
+
+INSERT INTO `User` (`id`, `email`, `password`) VALUES
+(1, 'a@a.a', 'a');
+
 --
 -- Indexes for dumped tables
 --
@@ -92,6 +112,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `User`
+--
+ALTER TABLE `User`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -99,13 +125,19 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `User`
+--
+ALTER TABLE `User`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
