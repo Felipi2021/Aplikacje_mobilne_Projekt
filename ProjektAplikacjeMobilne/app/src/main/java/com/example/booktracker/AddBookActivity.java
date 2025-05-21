@@ -11,26 +11,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class AddBookActivity extends AppCompatActivity {
+public class AddBookActivity extends BaseActivity {
     private String t, a, d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_book);
+        getLayoutInflater().inflate(R.layout.activity_add_book, findViewById(R.id.content_frame), true);
 
-        MaterialButton homeButton = findViewById(R.id.homeButton);
         MaterialButton addButton = findViewById(R.id.addButton);
         TextInputEditText titleInput = findViewById(R.id.titleInput);
         TextInputEditText authorInput = findViewById(R.id.authorInput);
         TextInputEditText descInput = findViewById(R.id.descInput);
 
-        homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-            finish();
-        });
 
         // Inside your AddBookActivity.java
 
@@ -59,9 +52,6 @@ public class AddBookActivity extends AppCompatActivity {
             // Proceed to add the book (e.g., send to database or API)
         });
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
     }
 
     private void sendBook(String title, String author, String description) {

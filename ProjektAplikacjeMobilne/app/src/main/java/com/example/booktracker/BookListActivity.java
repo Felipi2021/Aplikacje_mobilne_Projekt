@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class BookListActivity extends AppCompatActivity {
+public class BookListActivity extends BaseActivity {
 
     private AppDatabase db;
     private RecyclerView recyclerView;
@@ -28,7 +28,7 @@ public class BookListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_list);
+        getLayoutInflater().inflate(R.layout.activity_book_list, findViewById(R.id.content_frame), true);
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "book-database").allowMainThreadQueries().build();
@@ -46,14 +46,6 @@ public class BookListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new BookAdapter(new ArrayList<>(), this::onBookClick);
         recyclerView.setAdapter(adapter);
-
-        MaterialButton homeButton = findViewById(R.id.homeButton);
-        homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-            finish();
-        });
 
         fetchBooks();
     }

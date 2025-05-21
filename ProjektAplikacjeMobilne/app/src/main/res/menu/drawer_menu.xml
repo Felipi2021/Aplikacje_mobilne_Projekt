@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/menu/drawer_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_book_list"
+        android:title="Book List"
+        android:icon="@drawable/ic_book"/>
+    <item
+        android:id="@+id/nav_add_book"
+        android:title="Add Book"
+        android:icon="@drawable/ic_add"/>
+    <item
+        android:id="@+id/nav_search_book"
+        android:title="Search Book"
+        android:icon="@drawable/ic_search"/>
+    <item
+        android:id="@+id/nav_homepage"
+        android:title="Homepage"
+        android:icon="@drawable/ic_home"/>
+</menu>

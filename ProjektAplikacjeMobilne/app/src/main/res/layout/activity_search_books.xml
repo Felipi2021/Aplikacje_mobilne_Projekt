@@ -11,24 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search books..."
-        android:focusable="true"
+        android:iconifiedByDefault="false"
         android:layout_marginTop="32dp"
-        android:focusableInTouchMode="true"
-        android:clickable="true"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/returnHomeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Return to Homepage"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="16dp"/>
+        android:paddingTop="16dp"
+        android:contentDescription="List of books"/>
 </LinearLayout>

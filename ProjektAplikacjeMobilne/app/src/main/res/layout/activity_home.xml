@@ -1,56 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_light"
-    android:padding="32dp"
-    android:gravity="center_horizontal">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/homeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Tracker"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/primary_text"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/searchBooksButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Books"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        app:cornerRadius="24dp"
-        app:strokeColor="@color/purple_500"
-        android:textColor="@color/primary_text"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/viewBooksButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View My Books"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        app:cornerRadius="24dp"
-        app:strokeColor="@color/purple_500"
-        android:textColor="@color/primary_text"
-        android:layout_marginBottom="16dp"/>
+        <TextView
+            android:id="@+id/news_section_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Newest information from book world"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#222"
+            android:paddingBottom="12dp"
+            android:paddingTop="8dp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addBookButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add My Book"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        app:cornerRadius="24dp"
-        app:strokeColor="@color/purple_500"
-        android:textColor="@color/primary_text"
-        android:layout_marginBottom="16dp"/>
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/news_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <!-- Other homepage content here -->
+
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

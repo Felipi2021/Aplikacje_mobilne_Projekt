@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2025 at 11:19 AM
+-- Generation Time: May 21, 2025 at 12:51 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,7 +42,38 @@ INSERT INTO `books` (`id`, `title`, `author`, `description`) VALUES
 (1, 'fgfg', 'gfgfgg', 'fggf'),
 (2, '', '', ''),
 (3, '', '', ''),
-(4, 'd', 'f', 'g');
+(4, 'd', 'f', 'g'),
+(5, 'fsafasf', 'fasfafsf', 'asf'),
+(6, 'gddgg', 'gfgfgg', 'fgfgf'),
+(7, 'fghfgfhf', 'bffh', 'ghhfh'),
+(8, 'gfdghhhhhdfgdfg', 'hhhhhhh', 'hhhhhhh'),
+(9, 'kkkk', 'kkkkkkk', 'kkkkkkkk'),
+(10, 'gg', 'h', 'gg'),
+(11, 'abc', 'def', 'ghi'),
+(12, '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `content` text NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `content`, `created_at`) VALUES
+(1, 'tytul1', 'opis1', '2025-05-21'),
+(2, 'tytul2', 'opis2', '2025-05-21'),
+(3, 'tytul3', 'opis3', '2025-05-21'),
+(4, 'tytul4', 'opis4', '2025-05-21');
 
 --
 -- Indexes for dumped tables
@@ -55,6 +86,12 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -62,6 +99,12 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 

@@ -14,19 +14,17 @@ import retrofit2.*;
 import com.google.android.material.button.MaterialButton;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SearchBooksActivity extends AppCompatActivity {
+public class SearchBooksActivity extends BaseActivity {
     private ApiBookAdapter adapter;
     private GoogleBooksApi api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_books);
+        getLayoutInflater().inflate(R.layout.activity_search_books, findViewById(R.id.content_frame), true);
 
         SearchView searchView = findViewById(R.id.searchView);
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
-        MaterialButton returnHomeButton = findViewById(R.id.returnHomeButton);
-        returnHomeButton.setOnClickListener(v -> finish());
         adapter = new ApiBookAdapter(new ArrayList<>(), book -> {
             Intent intent = new Intent(this, BookDetailsActivity.class);
             intent.putExtra("title", book.volumeInfo.title);
