@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".BookListActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".BookDetailsActivity" />
         <activity android:name=".SearchBooksActivity"/>
         <activity android:name=".AddBookActivity"/>

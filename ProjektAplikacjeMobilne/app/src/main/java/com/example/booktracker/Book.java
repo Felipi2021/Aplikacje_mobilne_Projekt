@@ -1,4 +1,3 @@
-// File: 'Mobile_App_Project/ProjektAplikacjeMobilne/app/src/main/java/com/example/booktracker/Book.java'
 package com.example.booktracker;
 
 import androidx.room.Entity;
@@ -10,18 +9,21 @@ public class Book {
     @PrimaryKey(autoGenerate = true)
     public int id;
     public String title, author, description;
+    public String user_referenced;
 
-    public Book(int id, String title, String author, String description) {
+    public Book(int id, String title, String author, String description, String user_referenced) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
+        this.user_referenced = user_referenced;
     }
 
     @Ignore
-    public Book(String title, String author, String description) {
+    public Book(String title, String author, String description, String user_referenced) {
         this.title = title;
         this.author = author;
         this.description = description;
+        this.user_referenced = user_referenced;
     }
 }

@@ -3,6 +3,7 @@ package com.example.booktracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -12,7 +13,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class AddBookActivity extends BaseActivity {
-    private String t, a, d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +24,10 @@ public class AddBookActivity extends BaseActivity {
         TextInputEditText authorInput = findViewById(R.id.authorInput);
         TextInputEditText descInput = findViewById(R.id.descInput);
 
-
-        // Inside your AddBookActivity.java
-
         addButton.setOnClickListener(v -> {
-            String title = titleInput.getText().toString().trim();
-            String author = authorInput.getText().toString().trim();
-            String description = descInput.getText().toString().trim();
+            String title = titleInput.getText() != null ? titleInput.getText().toString().trim() : "";
+            String author = authorInput.getText() != null ? authorInput.getText().toString().trim() : "";
+            String description = descInput.getText() != null ? descInput.getText().toString().trim() : "";
 
             boolean valid = true;
 
@@ -49,16 +46,19 @@ public class AddBookActivity extends BaseActivity {
 
             if (!valid) return;
 
-            // Proceed to add the book (e.g., send to database or API)
+            sendBook(title, author, description);
         });
-
     }
 
     private void sendBook(String title, String author, String description) {
         new Thread(() -> {
-            Exception error = null;
-            String response = null;
+            final Exception[] error = {null};
+            final String[] response = {null};
             try {
+                // Get userId from SharedPreferences
+                String user_referenced = getSharedPreferences("prefs", MODE_PRIVATE)
+                        .getString("user_referenced", "demo");
+
                 URL url = new URL("http://10.0.2.2/add_book.php");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setConnectTimeout(5000);
@@ -68,7 +68,8 @@ public class AddBookActivity extends BaseActivity {
 
                 String postData = "title=" + URLEncoder.encode(title, "UTF-8") +
                         "&author=" + URLEncoder.encode(author, "UTF-8") +
-                        "&description=" + URLEncoder.encode(description, "UTF-8");
+                        "&description=" + URLEncoder.encode(description, "UTF-8") +
+                        "&user_referenced=" + URLEncoder.encode(user_referenced, "UTF-8");
 
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
@@ -88,24 +89,22 @@ public class AddBookActivity extends BaseActivity {
                 }
                 reader.close();
                 conn.disconnect();
-                response = sb.toString();
+                response[0] = sb.toString();
             } catch (Exception e) {
-                error = e;
+                error[0] = e;
                 Log.e("HTTP_ERROR", "Exception: ", e);
             }
 
-            String finalResponse = response;
-            Exception finalError = error;
             runOnUiThread(() -> {
-                if (finalError != null) {
-                    Log.e("AddBookActivity", "Error sending POST", finalError);
+                if (error[0] != null) {
+                    Toast.makeText(AddBookActivity.this, "Error adding book", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.d("AddBookActivity", "Server response: " + finalResponse);
+                    Toast.makeText(AddBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
                 }
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra("title", t);
-                resultIntent.putExtra("author", a);
-                resultIntent.putExtra("description", d);
+                resultIntent.putExtra("title", title);
+                resultIntent.putExtra("author", author);
+                resultIntent.putExtra("description", description);
                 setResult(RESULT_OK, resultIntent);
                 finish();
             });

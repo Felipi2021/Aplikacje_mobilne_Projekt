@@ -1,5 +1,6 @@
 package com.example.booktracker;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,14 +14,19 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private EditText emailEdit, passwordEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        getLayoutInflater().inflate(R.layout.activity_login, findViewById(R.id.content_frame), true);
+
         emailEdit = findViewById(R.id.editTextEmail);
         passwordEdit = findViewById(R.id.editTextPassword);
 
@@ -34,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Inflate the same menu as homepage
     private class LoginTask extends AsyncTask<String, Void, Boolean> {
         String message = "Login failed";
+        String userreferenced = null;
 
         @Override
         protected Boolean doInBackground(String... params) {
@@ -66,6 +72,12 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject json = new JSONObject(response.toString());
                 if (json.getBoolean("success")) {
                     message = "Login successful";
+                    // Get user id from response if available
+                    if (json.has("user_id")) {
+                        userreferenced = json.getString("user_referenced");
+                    } else {
+                        userreferenced = email; // fallback to email if user_id not provided
+                    }
                     return true;
                 } else {
                     message = json.getString("message");
@@ -80,7 +92,15 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean success) {
             Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
             if (success) {
-                // Proceed to next activity
+                // Set logged_in flag to true and save user_id
+                getSharedPreferences("prefs", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("logged_in", true)
+                        .putString("user_referenced", userreferenced)
+                        .apply();
+                // Proceed to next activity if needed
+                // Example: startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                // finish();
             }
         }
     }
