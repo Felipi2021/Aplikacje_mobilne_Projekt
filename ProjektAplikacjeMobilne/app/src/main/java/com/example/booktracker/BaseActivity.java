@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import android.widget.Toast;
@@ -22,6 +24,11 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        ViewCompat.setOnApplyWindowInsetsListener(toolbar, (v, insets) -> {
+            int insetTop = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
+            toolbar.setPadding(0, insetTop, 0, 0);
+            return insets;
+        });
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);

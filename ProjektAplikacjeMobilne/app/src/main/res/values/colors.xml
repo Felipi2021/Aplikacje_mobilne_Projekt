@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- res/values/colors.xml -->
-    <color name="purple_500">#6200EE</color>
-    <color name="background_light">#F3F6FB</color>
-    <color name="primary_text">#1A237E</color>
-    <color name="secondary_text">#3949AB</color>
-    <color name="desc_text">#616161</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#222222</color>
+    <color name="gray">#666666</color>
+    <color name="dark_gray">#444444</color>
+    <color name="background_light">#F5F5F5</color>
+    <color name="primary">#6200EE</color> <!-- Primary color -->
+    <color name="secondary">#03DAC5</color> <!-- Secondary color -->
+    <color name="desc_text">#757575</color> <!-- Description text color -->
+    <color name="purple_500">#9C27B0</color> <!-- Purple 500 -->
+    <color name="primary_text">#212121</color> <!-- Primary text color -->
+    <color name="secondary_text">#757575</color> <!-- Secondary text color -->
 </resources>
